@@ -83,7 +83,7 @@ class RatingCircular extends Component {
 
   
   render(){
-    const {width,height,value} = this.props
+    const {width,height,value, sadImage, HappyImage, NuetralImage} = this.props
         , {r} = this.state
         , startCoord = this.polarToCartesian(0)
         , endCoord = this.polarToCartesian((value > 179 ? 179 : value))
@@ -92,16 +92,16 @@ class RatingCircular extends Component {
     const BtnCircleRadius = 17; 
     let color = 'red';
     let emotionType='';
-    let emotionIcon = Images.Icon_Sad;
+    let emotionIcon = sadImage || Images.Icon_Sad;
 
     if(this.state.angle > -30){
-      emotionType='Sad'; color = 'red'; emotionIcon = Images.Icon_Sad;
+      emotionType='Sad'; color = 'red'; emotionIcon = sadImage || Images.Icon_Sad;
     }
     else if(this.state.angle > -50 || this.state.angle > -69){
-      emotionType='Neutral'; color = 'orange'; emotionIcon = Images.Icon_Neutral;
+      emotionType='Neutral'; color = 'orange'; emotionIcon = NuetralImage || Images.Icon_Neutral;
     }
     else if(this.state.angle > -70 || this.state.angle > -150){
-      emotionType='Happy'; color = 'green'; emotionIcon = Images.Icon_Happy;
+      emotionType='Happy'; color = 'green'; emotionIcon = HappyImage || Images.Icon_Happy;
     }
    
     return (
